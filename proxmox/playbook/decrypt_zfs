@@ -1,0 +1,5 @@
+
+zfs mount -l jankenpool/e
+zfs mount -l vampool/backup
+
+swapon /dev/zvol/swapool/swapfile
