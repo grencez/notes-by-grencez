@@ -1,0 +1,25 @@
+#> Install from liveusb. Remember to choose zfs raid0.
+#> Boot into new system.
+
+#> Add repository in gui. No Subscription. Disable enterprise repository.
+#> Reload.
+#> Update.  
+
+### Mess with power.
+echo 'KERNEL=="host[0-5]", SUBSYSTEM=="scsi_host", ATTR{link_power_management_policy}="max_performance"' > /etc/udev/rules.d/60-power.rules
+#> Reboot.
+cat /sys/class/scsi_host/host1/link_power_management_policy
+#> Verify it printed "max_performance"
+  
+zpool import -f jankenpool
+zpool import -f vampool
+
+pvesm add zfspool jankenpool_e -pool jankenpool/e
+pvesm add zfspool vampool -pool vampool
+#> In Datacenter > Storage, click into each ZFS pool and enable Thin Provisioning.
+
+zfs mount -l jankenpool/e
+zfs mount -l vampool/backup
+
+#v Copy backed up VM configs.
+cp /vampool/pve-bak/etc/pve/qemu-server/* /etc/pve/qemu-server/
