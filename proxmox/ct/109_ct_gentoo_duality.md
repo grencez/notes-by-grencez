@@ -35,7 +35,8 @@ emerge dev-vcs/git
 
 ```shell
 echo '*/* headless-awt' >> /etc/portage/package.use/00_world
-echo '=dev-util/bazel-5.0.0' >> /etc/portage/package.accept_keywords/00_world
+echo 'dev-util/bazel' >> /etc/portage/package.accept_keywords/00_world
+echo 'dev-util/bazel tools' > /etc/portage/package.use/bazel
 #echo 'dev-java/openjdk-bin' >> /etc/portage/package.mask/00_world
 emerge bazel
 ```
@@ -50,4 +51,6 @@ doas -u gendeux mkdir code
 cd code
 doas -u gendeux git clone https://github.com/fildesh/fildesh.git
 cd fildesh
+doas -u gendeux sh -c -l 'bazel build //...'
+doas -u gendeux sh -c -l 'bazel run --config=asan-libfuzzer //test/fuzz/kv:ensure_fuzz_test_full -- -fork=16'
 ```

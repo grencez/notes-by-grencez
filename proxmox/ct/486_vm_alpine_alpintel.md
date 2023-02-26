@@ -1,4 +1,5 @@
 ## Setup
+This is Alpine Linux on an emulated i486 Intel processor.
 
 ### Install steps
 - Get image x86 iso from https://alpinelinux.org/downloads/.
@@ -11,12 +12,26 @@
 Search package at https://pkgs.alpinelinux.org/packages?arch=x86.
 ```shell
 apk update
+apk upgrade
 apk add build-base cmake git
+```
+
+#### Guest Agent
+```shell
+nano /etc/apk/repositories
+#> Uncomment the "community" line.
+```
+
+```shell
+apk update
+apk add qemu-guest-agent
+rc-update add qemu-guest-agent default
 ```
 
 ### Build
 ```shell
 doas -u gendeux ash
+# Have to type root password. :(
 # I am unpriviledged now.
 # Go home.
 cd
