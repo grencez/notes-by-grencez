@@ -1,0 +1,9 @@
+- Hardware
+- Miniforum HX90
+   - 2x 7mm 2 TB HDD
+   - external 2 TB HDD
+   - external 8 TB HDD
+- RAIDZ1 array of 3x 2 TB HDDs.
+- ZFS backup to 8 TB HDD via pve-zsync.
+- Proxmox host at https://192.168.1.250:8006
+  - Router pins its IP.
