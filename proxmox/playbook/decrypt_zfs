@@ -3,3 +3,5 @@ zfs mount -l jankenpool/e
 zfs mount -l vampool/backup
 
 swapon /dev/zvol/swapool/swapfile
+
+echo 0 > /sys/module/zfs/parameters/zfs_dmu_offset_next_sync

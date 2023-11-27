@@ -14,4 +14,7 @@ sudo apt install software-properties-common
 sudo apt-add-repository non-free
 sudo dpkg --add-architecture i386
 sudo apt install steam
+
+# for dev
+apt install libopenblas-dev
 ```

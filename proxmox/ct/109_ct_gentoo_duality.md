@@ -54,3 +54,9 @@ cd fildesh
 doas -u gendeux sh -c -l 'bazel build //...'
 doas -u gendeux sh -c -l 'bazel run --config=asan-libfuzzer //test/fuzz/kv:ensure_fuzz_test_full -- -fork=16'
 ```
+
+
+```shell
+echo '*/* lapack' >> /etc/portage/package.use/00_world
+echo dev-python/click-didyoumean >> /etc/portage/package.accept_keywords/for-llama
+```
